@@ -28,34 +28,51 @@ export default function HomePage() {
   };
   
   return (
-    <main className={styles.main}>
-      <h1 className={styles.title}>🗝️ Regret Closet</h1>
-      <textarea
-        className={styles.textarea}
-        rows={4}
-        placeholder="Confess your latest regret..."
-        value={regret}
-        onChange={e => setRegret(e.target.value)}
-      />
-      <button
-        onClick={submitRegret}
-        className={styles.button}
-      >
-        Lock It In
-      </button>
-      <div className={styles.regretsContainer}>
-        <h2 className={styles.regretsTitle}>🕳️ Your Regrets:</h2>
-        <ul className={styles.regretsList}>
-          {regrets.map((r, i) => (
-            <li
-              key={i}
-              className={styles.regretItem}
-            >
-              {r}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </main>
+    <>
+      <main className={styles.main}>
+        <h1 className={styles.title}>🗝️ Regret Closet</h1>
+        <textarea
+          className={styles.textarea}
+          rows={4}
+          placeholder="Confess your latest regret..."
+          value={regret}
+          onChange={e => setRegret(e.target.value)}
+        />
+        <button
+          onClick={submitRegret}
+          className={styles.button}
+        >
+          Lock It In
+        </button>
+        <div className={styles.regretsContainer}>
+          <h2 className={styles.regretsTitle}>🕳️ Your Regrets:</h2>
+          <ul className={styles.regretsList}>
+            {regrets.map((r, i) => (
+              <li
+                key={i}
+                className={styles.regretItem}
+              >
+                {r}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </main>
+      <footer className={styles.footer}>
+        <a
+          href="https://github.com/LurckeA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.footerLink}
+          >
+          <img
+            src="/github-mark-white.svg"
+            alt="OctoCat Logo"
+            className={styles.footerLogo}
+          />
+          Made with ❤️ by LurckeA / Arialize
+        </a>
+      </footer>
+    </>
   );
 }

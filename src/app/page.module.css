@@ -1,50 +1,43 @@
 .main {
-  display: flex;
   min-height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
   background-color: #111827;
-  color: white;
+  color: #ffffff;
+  font-family: sans-serif;
+  margin-bottom: auto;
 }
 
 .title {
-  font-size: 1.875rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
 }
 
 .textarea {
   width: 100%;
-  max-width: 28rem;
+  max-width: 32rem;
   padding: 0.75rem;
   margin-bottom: 1rem;
   background-color: #1f2937;
-  border-radius: 0.375rem;
-  resize: none;
-  border: none;
   color: white;
-}
-
-.textarea::placeholder {
-  color: #9ca3af;
-}
-
-.textarea:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+  border: none;
+  border-radius: 0.5rem;
+  resize: none;
 }
 
 .button {
   background-color: #ef4444;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.375rem;
-  font-weight: bold;
-  border: none;
   color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease-in-out;
+  border: none;
 }
 
 .button:hover {
@@ -54,7 +47,7 @@
 .regretsContainer {
   margin-top: 2.5rem;
   width: 100%;
-  max-width: 28rem;
+  max-width: 32rem;
 }
 
 .regretsTitle {
@@ -63,17 +56,37 @@
 }
 
 .regretsList {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .regretItem {
   background-color: #1f2937;
   padding: 0.75rem;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   border: 1px solid #374151;
+  margin-bottom: 0.5rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 1rem;
+  background-color: #111827;
+  text-align: center;
+  border-top: 1px solid #1f2937;
+}
+
+.footerLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.footerLogo {
+  height: 1.25rem;
 }

@@ -6,7 +6,14 @@ A small project not to solve first world probelm, but just to learn Next.js. Fid
 
 Download the entirety through CLI (Git) or SSH
 
+[Install Bun](https://bun.sh/docs/installation)
+
 Run this in the terminal
 ```bash
 bun install
+```
+
+Run this in the terminal for good luck.👍🏻
+```bash
+bunx prisma generate
 ```
