@@ -1,50 +1,61 @@
-import Image from "next/image";
+'use client';
+
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function HomePage() {
+  const [regret, setRegret] = useState("");
+  const [regrets, setRegrets] = useState([]);
+  
+  useEffect(() => {
+    fetch("/api/regret")
+      .then(res => res.json())
+      .then(data => setRegrets(data.regrets))
+      .catch(err => console.error(err));
+  }, []);
+  
+  const submitRegret = async () => {
+    if (!regret.trim()) return;
+    await fetch("/api/regret", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: regret }),
+    });
+    setRegret("");
+    const res = await fetch("/api/regret");
+    const data = await res.json();
+    setRegrets(data.regrets);
+  };
+  
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://github.com/LurckeA"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/github-mark-white.svg"
-            alt="GitHub logo"
-            width={16}
-            height={16}
-          />
-          LurckeA GitHub
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <main className={styles.main}>
+      <h1 className={styles.title}>🗝️ Regret Closet</h1>
+      <textarea
+        className={styles.textarea}
+        rows={4}
+        placeholder="Confess your latest regret..."
+        value={regret}
+        onChange={e => setRegret(e.target.value)}
+      />
+      <button
+        onClick={submitRegret}
+        className={styles.button}
+      >
+        Lock It In
+      </button>
+      <div className={styles.regretsContainer}>
+        <h2 className={styles.regretsTitle}>🕳️ Your Regrets:</h2>
+        <ul className={styles.regretsList}>
+          {regrets.map((r, i) => (
+            <li
+              key={i}
+              className={styles.regretItem}
+            >
+              {r}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </main>
   );
 }
